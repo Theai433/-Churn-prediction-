@@ -33,15 +33,13 @@ The broad definition of churn is the action in which a customer’s telecommunic
 ### **Step 2: Data collection.**
 Demographic Data – Demographic data is from a third-party vendor. In this study, the following are examples of customer-level demographic information: Primary household member’s age, Gender, and marital status.
 Customer Internal Data – Customer internal data is from the company’s data warehouse. It consists of two parts. The first part is about customer information like market channels, plan types, bill agencies, and so on. The second part of the customer is the customer’s telecommunications usage data. Examples of customer usage variables are Weekly average call counts, Percentage change of minutes, Share of domestic/international revenue Customer Contact Records.
-
+```
 ```python
 import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score
 
-
-```python
  data = {
     'customer_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     'age': [40, 29, 61, 38, 29, 45, 68, 48, 39, 24],
@@ -57,11 +55,12 @@ from sklearn.metrics import accuracy_score
 
 df = pd.DataFrame(data)
 
-
+```
 ### **Step 3:Data Preprocessing.**
 After data collection, we preprocess the data focusing on addressing missing values, outliers, and duplicate records. Explanatory data analysis was conducted to prepare the data for the survival analysis. An univariate frequency analysis was used to pinpoint value distributions, missing values, and outliers. The variable transformation was conducted for some necessary numerical variables to reduce the level of skewness using one-hot encoding. Encode categorical variables using techniques like one-hot encoding or label encoding. Split the data into features (X) and the target variable (y), where y represents churn labels.
 
 Here is how I would do it
+```
 ```python
 plt.figure(figsize=(8, 5))
 sns.histplot(df['age'], bins=10, kde=True)
@@ -88,7 +87,7 @@ plt.ylabel('Monthly Payment')
 plt.xticks([0, 1], ['No Churn', 'Churn'])
 plt.show()
 
-
+```
 ### **Step 4:Feature Engineering and Selection.**
 We'll now identify and select the most influential features important for predicting churn.
 The specific features to include are:
@@ -97,17 +96,17 @@ Contract removal history.
 Billing patterns and fluctuations
 Customer engagement.
 Customer demographics, product & pricing.
-
+```
 ```python
 plt.figure(figsize=(10, 6))
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
 plt.title('Correlation Heatmap')
 plt.show()
 
-
+```
 ### **Step 5:Model selection- xgboost.**
 we are choosing the XGBoost algorithm since it has a strong track record of producing high-quality results in various machine learning tasks, especially in Kaggle competitions, where it has been a popular choice for winning solutions. XGBoost is also designed for efficient and scalable training of machine learning models, making it suitable for large datasets.
-
+```
 ```python
  Convert categorical variables into numerical using one-hot encoding
 df = pd.get_dummies(df, columns=['gender'], drop_first=True)
@@ -118,11 +117,12 @@ y = df['churn']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
 
 ### **Step 6:Training the model**
 After selecting xgboost as a suitable model, we will need to train the model using a set of preprocessed data. This data accurately represents the data you want your churn prediction model;xgboost, to work with moving forward. Xgboost then learns the relationships between different variables and how they contribute to the likeliness of churn.
 We will also proceed to perform hyperparameter tuning for xgboost with a focus on max depth, min child weight, number of iterations, beta, gamma, percent of columns considered, and percent of samples considered. It's computationally infeasible to tune all of these simultaneously in a huge grid search.
-
+```
 ```python
 import xgboost as xgb
 
@@ -141,13 +141,14 @@ grid_search.fit(X_train, y_train)
 # Get the best hyperparameters
 best_params = grid_search.best_params_
 
+```
 ### **Step 7:Model Integration**
 When your xgboost delivers the right outcomes, you can integrate it into your organization’s technology stack. The model should then d sync with your tools to monitor, analyze, and act on product and customer data. This includes customer support software, customer relationship management (CRM) platforms, digital adoption platforms, and project management tools.
 
 
 ### **Step 8:Model evaluation.**
 A well-integrated tcustom reports, filter through user segments, and deploy targeted content and optimizations. If xgboost identifies high churn risk for specific customers, you should be able to view what actions led to that classification and make informed decisions about mitigation strategies.
-
+```
 ```python
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
@@ -165,7 +166,7 @@ print("Accuracy:", accuracy)
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
-
+```
 ### **Step 9:Monitoring and refinement**
 As your customer base grows and your product becomes more complex, the variables influencing churn might change over time. Your team should factor in regular checkpoints or milestones to assess the quality of your xgboost algorithm and identify opportunities for improvement. You may need to retrain the xgboost model with a different set of data or optimize the model by factoring in more customer data.
 
