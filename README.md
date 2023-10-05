@@ -34,7 +34,7 @@ The broad definition of churn is the action in which a customer’s telecommunic
 Demographic Data – Demographic data is from a third-party vendor. In this study, the following are examples of customer-level demographic information: Primary household member’s age, Gender, and marital status.
 Customer Internal Data – Customer internal data is from the company’s data warehouse. It consists of two parts. The first part is about customer information like market channels, plan types, bill agencies, and so on. The second part of the customer is the customer’s telecommunications usage data. Examples of customer usage variables are Weekly average call counts, Percentage change of minutes, Share of domestic/international revenue 
 Customer Contact Records.
-```
+
 
 ```python
 import pandas as pd
@@ -109,7 +109,7 @@ plt.show()
 ```
 ### **Step 5:Model selection- xgboost.**
 we are choosing the XGBoost algorithm since it has a strong track record of producing high-quality results in various machine learning tasks, especially in Kaggle competitions, where it has been a popular choice for winning solutions. XGBoost is also designed for efficient and scalable training of machine learning models, making it suitable for large datasets.
-```
+
 ```python
  Convert categorical variables into numerical using one-hot encoding
 df = pd.get_dummies(df, columns=['gender'], drop_first=True)
@@ -125,7 +125,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 ### **Step 6:Training the model**
 After selecting xgboost as a suitable model, we will need to train the model using a set of preprocessed data. This data accurately represents the data you want your churn prediction model;xgboost, to work with moving forward. Xgboost then learns the relationships between different variables and how they contribute to the likeliness of churn.
 We will also proceed to perform hyperparameter tuning for xgboost with a focus on max depth, min child weight, number of iterations, beta, gamma, percent of columns considered, and percent of samples considered. It's computationally infeasible to tune all of these simultaneously in a huge grid search.
-```
+
 ```python
 import xgboost as xgb
 
@@ -151,7 +151,7 @@ When your xgboost delivers the right outcomes, you can integrate it into your or
 
 ### **Step 8:Model evaluation.**
 A well-integrated tcustom reports, filter through user segments, and deploy targeted content and optimizations. If xgboost identifies high churn risk for specific customers, you should be able to view what actions led to that classification and make informed decisions about mitigation strategies.
-```
+
 ```python
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
