@@ -9,7 +9,7 @@ Imagine you're working with Sprint, one of the biggest telecom companies in the 
 So, if you were in charge of predicting customer churn, how would you go about using machine learning to make a good guess about which customers might leave? What steps would you take to create a machine-learning model that can predict if someone's going to leave or not?
 
 ### **SOLUTION:**
-In the telecommunications industry, customer churn occurs when a customer stops conducting business with a company. This decision includes actions like canceling a subscription to a service, not renewing a contract, or seizing all purchases and usage of a product or solution.
+In the telecommunications industry, customer churn occurs when a customer stops conducting business with a company. This decision includes actions like canceling a subscription to a service, not renewing a contract, or seizing all purchases and usage of a product.
 ### **Churn prediction** is a company’s ability to spot customers at risk of churning before they actually do. Companies invest time and resources into building effective churn prediction strategies to retain revenue and minimize losses from all fronts. 
 The end goal of churn prediction is to understand when exactly a customer is expected to churn. From there, companies can prioritize at-risk customers that are valuable for growth and execute personalized strategies to reengage those customers again. 
 ### **A churn prediction model** is built with machine learning to predict churn with an algorithm training with patterns in historical data. 
