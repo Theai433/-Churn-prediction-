@@ -32,8 +32,10 @@ The broad definition of churn is the action in which a customer’s telecommunic
 
 ### **Step 2: Data collection.**
 Demographic Data – Demographic data is from a third-party vendor. In this study, the following are examples of customer-level demographic information: Primary household member’s age, Gender, and marital status.
-Customer Internal Data – Customer internal data is from the company’s data warehouse. It consists of two parts. The first part is about customer information like market channels, plan types, bill agencies, and so on. The second part of the customer is the customer’s telecommunications usage data. Examples of customer usage variables are Weekly average call counts, Percentage change of minutes, Share of domestic/international revenue Customer Contact Records.
+Customer Internal Data – Customer internal data is from the company’s data warehouse. It consists of two parts. The first part is about customer information like market channels, plan types, bill agencies, and so on. The second part of the customer is the customer’s telecommunications usage data. Examples of customer usage variables are Weekly average call counts, Percentage change of minutes, Share of domestic/international revenue 
+Customer Contact Records.
 ```
+
 ```python
 import pandas as pd
 import xgboost as xgb
@@ -60,8 +62,9 @@ df = pd.DataFrame(data)
 After data collection, we preprocess the data focusing on addressing missing values, outliers, and duplicate records. Explanatory data analysis was conducted to prepare the data for the survival analysis. An univariate frequency analysis was used to pinpoint value distributions, missing values, and outliers. The variable transformation was conducted for some necessary numerical variables to reduce the level of skewness using one-hot encoding. Encode categorical variables using techniques like one-hot encoding or label encoding. Split the data into features (X) and the target variable (y), where y represents churn labels.
 
 Here is how I would do it
-```
+
 ```python
+
 plt.figure(figsize=(8, 5))
 sns.histplot(df['age'], bins=10, kde=True)
 plt.title('Age Distribution')
@@ -96,7 +99,7 @@ Contract removal history.
 Billing patterns and fluctuations
 Customer engagement.
 Customer demographics, product & pricing.
-```
+
 ```python
 plt.figure(figsize=(10, 6))
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
